@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export default function Register({ setSelectLoginOrRegister }) {
 
-    const baseUrl = "http://localhost:8080";
-    const loginUrl = `${baseUrl}/login`;
-    const signupUrl = `${baseUrl}/signup`;
+    
+    const baseUrl = import.meta.env.VITE_API_URL;
+    const signupUrl = `${baseUrl}/signin/register`;
 
 
     const handleSignUp = async (e) => {
@@ -15,6 +15,7 @@ export default function Register({ setSelectLoginOrRegister }) {
                 email: e.target.email.value,
                 password: e.target.password.value,
             });
+            console.log("Registration successful.");
 
         } catch (error) {
             console.log(error);

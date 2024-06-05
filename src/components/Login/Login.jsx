@@ -1,4 +1,8 @@
 export default function Login({ setSelectLoginOrRegister }) {
+
+    const baseUrl = import.meta.env.VITE_API_URL;
+    const loginUrl = `${baseUrl}/login`;
+
     return (
         <div className="prose">
             <h1 className="mb-5 self-start">Login</h1>
