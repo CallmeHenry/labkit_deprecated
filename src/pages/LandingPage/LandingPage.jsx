@@ -1,23 +1,21 @@
 import Spline from '@splinetool/react-spline';
 export default function LandingPage() {
-    return (
-        <>
-            <div>
-            <article className="prose lg:prose-xl">
-  <h1>Garlic bread with cheese: What the science tells us</h1>
-  <p>
-    For years parents have espoused the health benefits of eating garlic bread with cheese to their
-    children, with the food earning such an iconic status in our culture that kids will often dress
-    up as warm, cheesy loaf for Halloween.
-  </p>
-  <p>
-    But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
-    springing up around the country.
-  </p>
-</article>
+  return (
+    <>
+      <div className='flex flex-col h-dvh'>
 
-<Spline scene="https://draft.spline.design/zSCLXeUIWAiwxQFj/scene.splinecode"/>
-                    </div>
-                </>
-                )
+        <div id="hero" className='flex h-dvh bg-gradient-to-tr from-blue-500 to-cyan-300'>
+
+
+          <Spline scene="https://draft.spline.design/zSCLXeUIWAiwxQFj/scene.splinecode" />
+
+          <div className="prose-2xl prose-headings:text-blue-50 prose-headings:mb-0 prose-p:text-blue-100 flex flex-col justify-center mr-24 ">
+            <h1 >Manage your devices</h1>
+            <p>A computer hardware toolkit that allows users to scan the serial number of a device and return hardware specifications.
+              The specs are stored in a database where users are able to view and manage their devices.</p>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
