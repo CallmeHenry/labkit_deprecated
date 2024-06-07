@@ -1,6 +1,8 @@
+import Assets from "../../components/Assets/Assets";
 import Dashboard from "../../components/Dashboard/Dashboard";
 
 export default function ToolkitPage() {
+
     return (
         <div id="ToolkitPage">
             <div className="drawer">
@@ -18,7 +20,9 @@ export default function ToolkitPage() {
                         <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Dashboard</label>
                     </div>
 
-                    <Dashboard />
+                    {/* <Dashboard /> */}
+                    <Assets />
+                   
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
