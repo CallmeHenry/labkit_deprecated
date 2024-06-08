@@ -8,7 +8,7 @@ export default function LandingPage() {
         <div id="hero" className='flex h-dvh bg-gradient-to-tr from-blue-500 to-cyan-300'>
 
 
-          <Spline scene="https://draft.spline.design/zSCLXeUIWAiwxQFj/scene.splinecode" className='z-10'/>
+          <Spline scene="https://prod.spline.design/B0KrVlyDlhm-eFJr/scene.splinecode" className='z-10'/>
 
           <div className="prose-2xl prose-headings:text-blue-50 prose-headings:mb-0 prose-p:text-blue-100 flex flex-col justify-center mr-24 z-10">
             <h1 >Manage your devices</h1>
