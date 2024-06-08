@@ -9,7 +9,7 @@ export default function SignInPage() {
 
   return (
     <div id="SignInPage" className="flex flex-col items-center justify-center w-dvw h-dvh bg-gradient-to-tr from-blue-500 to-cyan-300">
-      <div id="form" className="flex flex-col items-center justify-around border-solid border-4 w-96 p-16 bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400" >
+      <div id="form" className="flex flex-col items-center justify-around rounded-xl p-2 bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400" >
         {selectLoginOrRegister === 'login' ? (
           <Login setSelectLoginOrRegister={setSelectLoginOrRegister} />
         ) : (
