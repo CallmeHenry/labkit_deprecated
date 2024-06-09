@@ -8,11 +8,6 @@ import { Input } from "../ui/input"
 import { cn } from "../../utils/cn"
 
 
-
-
-
-
-
 export default function Login({ setSelectLoginOrRegister }) {
 
     const baseUrl = import.meta.env.VITE_API_URL;

@@ -6,9 +6,9 @@ async function getData() {
   return [
     {
       id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com"
+      status: "WIP",
+      model: "Asus Model 1",
+      ticket: "1"
     }
     // ...
   ]
