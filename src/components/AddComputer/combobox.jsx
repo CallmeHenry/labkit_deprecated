@@ -53,6 +53,7 @@ export default function ComboBox() {
                     role="combobox"
                     aria-expanded={open}
                     className="w-full justify-between text-black"
+                    id="brand"
                 >
                     {value
                         ? brands.find(brand => brand.value === value)?.label
