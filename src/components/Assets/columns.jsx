@@ -1,27 +1,3 @@
-// "use client"
-// export const columns = [
-//   {
-//     accessorKey: "id",
-//     header: "ID"
-//   },
-//   {
-//     accessorKey: "serial",
-//     header: "Serial Number"
-//   },
-//   {
-//     accessorKey: "status",
-//     header: "Status"
-//   },
-//   {
-//     accessorKey: "model",
-//     header: "Model"
-//   },
-//   {
-//     accessorKey: "ticket",
-//     header: "Ticket"
-//   }
-// ]
-
 "use client"
 import { MoreHorizontal } from "lucide-react"
 
@@ -34,6 +10,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "../../components/ui/dropdown-menu"
+import { useState } from 'react';
+import EditComputer from '../EditComputer/EditComputer';
 
 export const columns = [
   {
@@ -59,9 +37,10 @@ export const columns = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original
-
+      const rowObj = row.original
+      const [showEditComputer, setShowEditComputer] = useState(false);
       return (
+        <>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
@@ -71,16 +50,23 @@ export const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            {/* <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(ticket.id)}
+                    <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(rowObj.serial)}
             >
-              Copy payment ID
-            </DropdownMenuItem> */}
+              Copy Serial Number
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(rowObj.model)}
+            >
+              Copy Model
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View ticket</DropdownMenuItem>
-            <DropdownMenuItem>Edit computer</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {setShowEditComputer(true)}}>Edit computer</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        {showEditComputer ? <EditComputer serialProp={rowObj.serial} setShowEditComputer={setShowEditComputer} /> : ""}
+        </>
       )
     }
   }

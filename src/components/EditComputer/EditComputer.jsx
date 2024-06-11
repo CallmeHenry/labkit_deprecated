@@ -7,7 +7,6 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
-    DrawerTrigger
 } from "../../components/ui/drawer"
 import axios from 'axios';
 import { Label } from "../ui/label"
@@ -15,9 +14,54 @@ import { Input } from "../ui/input"
 import { cn } from "../../utils/cn"
 import { Textarea } from '../ui/textarea';
 import ComboBox from "./combobox";
+import { useEffect, useState } from 'react';
 
-export default function AddComputer() {
+export default function AddComputer({ serialProp, setShowEditComputer }) {
     const baseUrl = import.meta.env.VITE_API_URL;
+
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+
+    useEffect(() => {
+        retrieveComputerInfo();
+    }, []);
+
+    useEffect(() => {
+        if (!isDrawerOpen) {
+            const timeoutId = setTimeout(() => {
+                setShowEditComputer(false);
+            }, 1000); 
+            return () => clearTimeout(timeoutId);
+        }
+    }, [isDrawerOpen]);
+
+    async function retrieveComputerInfo() {
+        try {
+            console.log("Retrieving computer from database.");
+            const response = await axios.get(`${baseUrl}/toolkit/assets/computers/${serialProp}`);
+            console.log(response);
+            const computer = response.data.computer;
+
+            const brand = document.querySelector('#brand');
+            const serial = document.querySelector('#serial');
+            const model = document.querySelector('#model');
+            const cpu = document.querySelector('#processor');
+            const ram = document.querySelector('#ram');
+            const storage = document.querySelector('#storage');
+            const os = document.querySelector('#os');
+            const screen = document.querySelector('#screen');
+
+            brand.textContent = computer.brand;
+            serial.value = computer.serial;
+            model.value = computer.model;
+            cpu.value = computer.processor;
+            ram.value = computer.ram;
+            storage.value = computer.storage;
+            os.value = computer.os;
+            screen.value = computer.screen;
+        } catch (error) {
+            console.log("Error retrieving computer info ", error);
+        }
+    }
 
     async function handleSubmit() {
 
@@ -44,7 +88,7 @@ export default function AddComputer() {
 
         try {
             console.log("Adding computer to database.");
-            await axios.post(`${baseUrl}/toolkit/assets/computers`, computer);
+            await axios.put(`${baseUrl}/toolkit/assets/computers`, computer);
             return;
         } catch (error) {
             console.log("Error submitting: ", error);
@@ -66,26 +110,6 @@ export default function AddComputer() {
 
 
         try {
-            // this should be EDIT a computer
-            // console.log("Retrieving computer from database.");
-            // const response = await axios.get(`${baseUrl}/toolkit/assets/computers/${serial.value}`);
-            // console.log(response);
-            // const computer = response.data.computer;
-
-
-            // const model = document.querySelector('#model');
-            // const cpu = document.querySelector('#processor');
-            // const ram = document.querySelector('#ram');
-            // const storage = document.querySelector('#storage');
-            // const os = document.querySelector('#os');
-            // const screen = document.querySelector('#screen');
-
-            // model.value = computer.model;
-            // cpu.value = computer.processor;
-            // ram.value = computer.ram;
-            // storage.value = computer.storage;
-            // os.value = computer.os;
-            // screen.value = computer.screen;
 
             console.log(`Will attempt to search ${model.value} in DB.`);
             const response = await axios.get(`${baseUrl}/toolkit/assets/models/${model.value}`);
@@ -155,15 +179,13 @@ export default function AddComputer() {
     }
 
     return (
-        <Drawer>
-            <DrawerTrigger asChild>
-                <Button variant="outline" className="mb-4 text-black">Add Computer</Button>
-            </DrawerTrigger>
+        <Drawer open={isDrawerOpen}>
+
             <DrawerContent>
                 <div className="mx-auto w-6/12 h-[90dvh] flex flex-col">
                     <DrawerHeader>
-                        <DrawerTitle>Add Computer</DrawerTitle>
-                        <DrawerDescription>Add a computer to the database.</DrawerDescription>
+                        <DrawerTitle>Edit Computer</DrawerTitle>
+                        <DrawerDescription>Edit computer {serialProp}</DrawerDescription>
                     </DrawerHeader>
 
                     <form className="my-8 w-full flex flex-row flex-wrap align-middle justify-center gap-x-16 gap-y-12 ">
@@ -232,7 +254,7 @@ export default function AddComputer() {
                         </DrawerClose>
 
                         <DrawerClose asChild>
-                            <Button variant="outline">Cancel</Button>
+                            <Button variant="outline" onClick={() => { setIsDrawerOpen(false) }}>Cancel</Button>
                         </DrawerClose>
                     </DrawerFooter>
                 </div>
