@@ -89,9 +89,11 @@ export default function AddComputer({ serialProp, setShowEditComputer }) {
         try {
             console.log("Adding computer to database.");
             await axios.put(`${baseUrl}/toolkit/assets/computers`, computer);
+            setIsDrawerOpen(false);
             return;
         } catch (error) {
             console.log("Error submitting: ", error);
+            setIsDrawerOpen(false);
             return;
         }
 
