@@ -66,27 +66,7 @@ export default function AddComputer() {
 
 
         try {
-            // this should be EDIT a computer
-            // console.log("Retrieving computer from database.");
-            // const response = await axios.get(`${baseUrl}/toolkit/assets/computers/${serial.value}`);
-            // console.log(response);
-            // const computer = response.data.computer;
-
-
-            // const model = document.querySelector('#model');
-            // const cpu = document.querySelector('#processor');
-            // const ram = document.querySelector('#ram');
-            // const storage = document.querySelector('#storage');
-            // const os = document.querySelector('#os');
-            // const screen = document.querySelector('#screen');
-
-            // model.value = computer.model;
-            // cpu.value = computer.processor;
-            // ram.value = computer.ram;
-            // storage.value = computer.storage;
-            // os.value = computer.os;
-            // screen.value = computer.screen;
-
+ 
             console.log(`Will attempt to search ${model.value} in DB.`);
             const response = await axios.get(`${baseUrl}/toolkit/assets/models/${model.value}`);
             const computer = response.data.computerInDB;

@@ -11,7 +11,7 @@ const PieChartAssets = () => {
             try {
                 console.log('Attempting to get total number of computers.');
                 const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/toolkit/assets/test`
+                    `${import.meta.env.VITE_API_URL}/toolkit/assets/dashboard`
                 );
                 console.log(`Successfully retrieved total number of computers: ${response.data.value}`);
                 setData([response.data]);

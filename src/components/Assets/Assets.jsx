@@ -25,7 +25,7 @@ export default function Assets() {
         }
 
         fetchData();
-    }, []);
+    }, [data]);
 
     return (
         <div className="container mx-auto py-10 bg-white rounded-3xl mt-1 mb-1 w-[99%]">
