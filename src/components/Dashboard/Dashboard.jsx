@@ -1,18 +1,22 @@
+import BarChartAssets from "./barchart.jsx"
+import PieChartAssets from "./piechart.jsx"
 export default function Dashboard() {
     return (
-        <div id="Dashboard" className="prose">
-
-            <div className="card w-96 glass">
-                <h2></h2>
-                <label>Total users</label>
-                <div className="card-body">
-                    <h2 className="card-title">Life hack</h2>
-                    <p>How to park your car at your garage?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Learn now!</button>
-                    </div>
+        <div id="Dashboard" className="flex flex-col justify-center items-center h-2/3 container mx-auto py-10 bg-white rounded-3xl mt-1 mb-1 w-[99%]">
+            
+                <div className="prose">
+                    <h1 className="mb-5">Dashboard</h1>
+                </div>
+            <div className="flex flex-row w-full h-full">
+                <div className="w-1/2 h-full">
+                    <BarChartAssets />
+                </div>
+                <div className="w-1/2 h-full">
+                    <PieChartAssets />
                 </div>
             </div>
+
+
         </div>
     )
 }

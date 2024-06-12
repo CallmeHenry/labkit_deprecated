@@ -5,18 +5,6 @@ import { DataTable } from './data-table';
 import AddComputer from '../AddComputer/AddComputer';
 
 async function getData() {
-    // // Fetch data from your API here.
-    // return [
-    //     {
-    //         id: "728ed52f",
-    //         serial: "123",
-    //         status: "WIP",
-    //         model: "Asus Model 1",
-    //         ticket: "1"
-    //     },
-    //     // ...
-    // ];
-
     const response = await axios.get(`${import.meta.env.VITE_API_URL}/toolkit/assets/computers`);
     return response.data.computers;
 }
@@ -40,7 +28,10 @@ export default function Assets() {
     }, []);
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="container mx-auto py-10 bg-white rounded-3xl mt-1 mb-1 w-[99%]">
+            <div className="prose mb-4">
+                <h1>Assets</h1>
+            </div>
             <AddComputer />
             <DataTable columns={columns} data={data} />
         </div>

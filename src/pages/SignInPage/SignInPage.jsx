@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Login from '../../components/Login/Login.jsx';
 import Register from '../../components/Register/Register.jsx';
 import { BackgroundGradient } from '../../components/ui/background-gradient.jsx';
+import { BackgroundBeams } from '../../components/ui/background-beams.jsx';
 
 export default function SignInPage() {
 
@@ -20,6 +21,7 @@ export default function SignInPage() {
           </BackgroundGradient>
         )}
       </div>
+      <BackgroundBeams />
     </div>
   );
 };
