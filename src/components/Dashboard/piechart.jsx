@@ -1,29 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
-import axios from 'axios';
 
-const PieChartAssets = () => {
-    const [data, setData] = useState([]);
+
+export default function PieChartAssets({ data }) {
+
     const [activeIndex, setActiveIndex] = useState(0);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                console.log('Attempting to get total number of computers.');
-                const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/toolkit/assets/dashboard`
-                );
-                console.log(`Successfully retrieved total number of computers: ${response.data.value}`);
-                setData([response.data]);
-                console.log('Data:', data);
-            } catch (error) {
-                console.error('Error trying to get total number of computers:', error);
-            }
-        };
-
-        const timeout = setTimeout(fetchData, 20);
-        return () => clearTimeout(timeout);
-    }, []);
 
     const renderActiveShape = (props) => {
         const RADIAN = Math.PI / 180;
@@ -63,9 +44,9 @@ const PieChartAssets = () => {
             />
             <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
             <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
+            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${value}`}</text>
             <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-                {`(Rate ${(percent * 100).toFixed(2)}%)`}
+                {`${(percent * 100).toFixed(2)}%`}
             </text>
         </g>
     );
@@ -94,6 +75,4 @@ const PieChartAssets = () => {
         </ResponsiveContainer>
     );
 };
-
-export default PieChartAssets;
 

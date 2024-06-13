@@ -13,33 +13,29 @@ export default function ToolkitPage() {
 
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
-
-
                 <div className="drawer-content flex">
-                    {/* Page content here */}
 
 
                     {/* mini side bar */}
                     <div className="flex flex-col w-24 h-dvh bg-none menu mr-8">
-                        <label htmlFor="my-drawer" className="btn btn-primary drawer-button"><Chevron text={"Open"} rotation={"-rotate-90"} /></label>
+                        <label htmlFor="my-drawer" className="btn btn-primary drawer-button bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] border-none drop-shadow-md"><Chevron text={"Open"} rotation={"-rotate-90"} /></label>
 
                     </div>
                     <div className="container mx-auto mt-8 mb-8 p-20 drop-shadow-xl ">
-                      
 
-                            {showComponent === "dashboard" ? <Dashboard /> : ""}
-                            {showComponent === "assets" ? <Assets /> : ""}
 
-       
+                        {showComponent === "dashboard" ? <Dashboard /> : ""}
+                        {showComponent === "assets" ? <Assets /> : ""}
+
                     </div>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
-                    <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content gap-4">
+                    <ul className="menu p-4 w-80 min-h-full text-base-content gap-4 bg-white">
                         {/* Sidebar content here */}
-                        <label htmlFor="my-drawer" className="btn btn-primary drawer-button w-full">
-                            <div className="w-dvw h-full">
+                        <label htmlFor="my-drawer" className="btn btn-primary drawer-button bg-gradient-to-br  from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] border-none">
+                            <div className="w-full h-full">
                                 <Chevron text={"Close"} rotation={"rotate-90"} />
                             </div>
                         </label>
@@ -50,7 +46,7 @@ export default function ToolkitPage() {
 
                 </div>
             </div>
-          
+
         </div>
     )
 }

@@ -12,11 +12,11 @@ export default function SignInPage() {
     <div id="SignInPage" className="flex flex-col items-center justify-center w-dvw h-dvh bg-gradient-to-tr from-blue-500 to-cyan-300">
       <div id="form" className="flex flex-col items-center justify-around rounded-xl p-2" >
         {selectLoginOrRegister === 'login' ? (
-          <BackgroundGradient >
+          <BackgroundGradient className="p-1">
             <Login setSelectLoginOrRegister={setSelectLoginOrRegister} />
           </BackgroundGradient>
         ) : (
-          <BackgroundGradient>
+          <BackgroundGradient className="p-1">
             <Register setSelectLoginOrRegister={setSelectLoginOrRegister} />
           </BackgroundGradient>
         )}
